@@ -9,3 +9,12 @@ pool:
 steps:
 - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
   displayName: 'Component Detection'
+
+
+variables:
+  azureSubscription: 'Visual Studio Enterprise Subscription'       
+  resourceGroup: 'llmail-inject-rg'
+  location: 'Central India'
+  storageAccountName: 'llmailstorage123'
+  functionAppName: 'llmailfuncapp123'
+  acrName: 'llmailacr123'
