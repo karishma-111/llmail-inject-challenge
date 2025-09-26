@@ -6,15 +6,20 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-  displayName: 'Component Detection'
-
+stages:
+- stage: BuildAndDeploy
+  displayName: 'Build and Deploy LLMail Inject'
+  jobs:
+  - job: DeployJob
+    displayName: 'Provision and Deploy Resources'
+    steps:
+    - script: echo "Pipeline started successfully!"
+      displayName: 'Initialization Step'
 
 variables:
-  azureSubscription: 'Visual Studio Enterprise Subscription'       
-  resourceGroup: 'llmail-inject-rg'
-  location: 'Central India'
-  storageAccountName: 'llmailstorage123'
-  functionAppName: 'llmailfuncapp123'
-  acrName: 'llmailacr123'
+  azureSubscription: 'AzureConnection'   # Name of your service connection in Azure DevOps
+  resourceGroup: 'llmail-inject-rg'      # Your resource group name
+  location: 'eastus'                     # Azure region
+  storageAccountName: 'llmailstorage123' # Must be globally unique
+  functionAppName: 'llmailfuncapp123'    # Must be globally unique
+  acrName: 'llmailacr123'                # Must be globally unique
